@@ -17,6 +17,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 // import controllers
+const { workoutsController } = require('./controller')
 
 // middleware
 const customMiddleware = (req,res,next) => {
@@ -28,7 +29,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use('/workouts', workoutsController)
 
 // TEST ROUTE -> WORKING
 app.get("/", (req, res) => {
